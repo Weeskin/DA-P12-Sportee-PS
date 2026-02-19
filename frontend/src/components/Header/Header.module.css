@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #020203;
+  height: 5.6875rem;
+  padding: 0 1.875rem;
+  z-index: 10;
+}
+
+.logo {
+  height: 3.5625rem;
+}
+
+.nav {
+  display: flex;
+  gap: 3.75rem;
+}
+
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: #E60000;
+}
+
