@@ -1,0 +1,26 @@
+.wrapper {
+  background-color: #ff0000;
+  border-radius: 0.3125rem;
+  padding: 1.5rem 0 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 0 1.5rem;
+  max-width: 10rem;
+  line-height: 1.4;
+}
+
+.tooltip {
+  background-color: #ffffff;
+  color: #282d30;
+  font-size: 0.5rem;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+

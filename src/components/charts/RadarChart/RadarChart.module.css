@@ -1,0 +1,9 @@
+.wrapper {
+  background-color: #282d30;
+  border-radius: 0.3125rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

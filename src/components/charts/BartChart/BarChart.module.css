@@ -1,0 +1,31 @@
+.wrapper {
+  background-color: #fbfbfb;
+  border-radius: 0.3125rem;
+  padding: 1.5rem 2rem;
+}
+
+.title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #282d30;
+  margin: 0 0 1.5rem;
+}
+
+.tooltip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #e60000;
+  color: #ffffff;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 0.6875rem 0.5rem;
+  text-align: center;
+}
+
+.legendLabel {
+  font-size: 0.875rem;
+  color: #74798c;
+  font-weight: 500;
+}
+
