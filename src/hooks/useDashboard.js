@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getUserInfo, getUserActivity, getUserAverageSessions, getUserPerformance } from '../services/api'
+import { getUserInfo, getUserActivity, hgetUserAverageSessions, getUserPerformance } from '../services/api'
 import { formatUserInfo, formatActivity, formatAverageSessions, formatPerformance } from '../services/dataFormatter'
 
 /**
@@ -13,12 +13,33 @@ export function useDashboard(userId) {
   const [performance, setPerformance] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  //const promise_all = []
 
   useEffect(() => {
     if (!userId) return
 
     setIsLoading(true)
     setError(null)
+
+    try {
+       const [info, activityData, avgSessions, perf] = await Promise.all([
+      getUserInfo(userId),
+      getUserActivity(userId),
+      getUserAverageSessions(userId),
+      getUserPerformance(userId)]
+       )
+
+         setUserInfo(formatUserInfo(info))
+         setActivity(formatActivity(activityData))
+         setAverageSessions(formatAverageSessions(avgSessions))
+         setPerformance(formatPerformance(perf))
+
+    ])
+    } catch(error) {
+      //……
+    } finally {
+      // loading
+    }
 
     Promise.all([
       getUserInfo(userId),
