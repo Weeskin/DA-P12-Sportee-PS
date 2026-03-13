@@ -4,7 +4,7 @@ import { getMockUserInfo, getMockUserActivity, getMockUserAverageSessions, getMo
  * Mettre à true pour utiliser les données mockées (sans backend)
  * Mettre à false pour utiliser l'API réelle
  */
-const USE_MOCK = true;
+const USE_MOCK = false
 
 const BASE_URL = '/user'
 
@@ -53,7 +53,7 @@ export async function getUserAverageSessions(userId) {
  * @returns {Promise<object>}
  */
 export async function getUserPerformance(userId) {
- if (USE_MOCK) return getMockUserPerformance(Number(userId))
+  if (USE_MOCK) return getMockUserPerformance(Number(userId))
   const response = await fetch(`${BASE_URL}/${userId}/performance`)
   if (!response.ok) throw new Error(`Performances de l'utilisateur ${userId} introuvables`)
   const json = await response.json()

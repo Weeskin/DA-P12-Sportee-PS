@@ -36,9 +36,8 @@ export function formatActivity(data) {
  * @returns {Array}
  */
 export function formatAverageSessions(data) {
-  const dayLabels = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
   return data.sessions.map((session) => ({
-    day: dayLabels[session.day - 1],
+    day: session.day,
     sessionLength: session.sessionLength,
   }))
 }

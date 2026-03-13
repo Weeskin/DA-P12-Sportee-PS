@@ -16,10 +16,14 @@ import styles from './BarChart.module.css'
  */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
+    // Trouver les données pour kilogram et calories
+    const kilogramData = payload.find(item => item.dataKey === 'kilogram')
+    const caloriesData = payload.find(item => item.dataKey === 'calories')
+
     return (
       <div className={styles.tooltip}>
-        <span>{payload[0].value}kg</span>
-        <span>{payload[1].value}kCal</span>
+        {kilogramData && <span>{kilogramData.value}kg</span>}
+        {caloriesData && <span>{caloriesData.value}kCal</span>}
       </div>
     )
   }
