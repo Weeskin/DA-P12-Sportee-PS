@@ -14,8 +14,11 @@
 
 .nav {
   display: flex;
-  gap: 3.75rem;
+  justify-content: space-evenly;
+  flex: 1;
+  gap: 0;
 }
+
 
 .nav a {
   color: #ffffff;

@@ -1,0 +1,55 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+    padding: 1.5rem 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;  /* ← Ajout : empile title et chartContainer verticalement */
+    align-items: center;
+    justify-content: flex-start;  /* ← Modifié : align en haut au lieu du centre */
+}
+
+.title {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;  /* ← Ajout : le title à gauche */
+}
+
+.chartContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+    height: 200px;
+    width: 200px;
+    flex: 1;
+    aspect-ratio: 1 / 1;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    z-index: 10;  /* ← Ajout : assure que le texte est au-dessus du graphique */
+}
+
+.percent {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.label {
+    font-size: 14px;
+    color: #74798C;
+}

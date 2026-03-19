@@ -1,5 +1,5 @@
 .wrapper {
-  background-color: #fbfbfb;
+  background-color: var(--color-background);
   border-radius: 0.3125rem;
   padding: 1.5rem 2rem;
 }
@@ -14,13 +14,16 @@
 .tooltip {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.5rem;
   background-color: #e60000;
   color: #ffffff;
   font-size: 0.6875rem;
   font-weight: 500;
-  padding: 0.6875rem 0.5rem;
+  padding: 0.5rem;
+  margin-left: 2rem !important;
   text-align: center;
+  width: fit-content;
+  white-space: nowrap;
 }
 
 .headerContainer {

@@ -15,8 +15,10 @@
   /* Couleurs globales */
   --color-primary: #E60000;
   --color-dark: #020203;
-  --color-background: #FBFBFB;
+  --color-background: #F0F0F0;
   --color-white: #ffffff;
+
+  --border-radius: 0.3125rem;
 }
 
 body {

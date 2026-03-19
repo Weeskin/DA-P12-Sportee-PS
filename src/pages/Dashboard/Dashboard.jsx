@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import styles from './Dashboard.module.css'
 import Header from '../../components/Header/Header'
 import KeyData from '../../components/KeyData/KeyData'
-import ActivityBarChart from '../../components/charts/BartChart/BartChart'
+import ActivityBarChart from '../../components/charts/BarChart/BarChart'
 import AverageSessionsLineChart from '../../components/charts/LineChart/LineChart'
 import PerformanceRadarChart from '../../components/charts/RadarChart/RadarChart'
 import ScoreRadialChart from '../../components/charts/RadialChart/RadialChart'
@@ -98,7 +98,7 @@ function Dashboard() {
               <KeyData
                 icon={caloriesIcon}
                 iconBg="rgba(255, 0, 0, 0.07)"
-                value={`${calorieCount.toLocaleString('fr-FR')}kCal`}
+                value={`${calorieCount.toLocaleString('en-US')}kCal`}
                 label="Calories"
               />
               <KeyData

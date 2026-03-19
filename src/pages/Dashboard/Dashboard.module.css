@@ -65,6 +65,7 @@
   padding: 3.75rem 6.25rem;
   background-color: #fbfbfb;
   overflow-y: auto;
+  overflow-x: auto;
 }
 
 .feedback {
@@ -102,6 +103,7 @@
   display: grid;
   grid-template-columns: 1fr 15.5rem;
   gap: 1.875rem;
+  min-width: 1200px;
 }
 
 .mainCol {
@@ -112,17 +114,21 @@
 
 .barChartBox {
   width: 100%;
+  min-width: 600px;  /* ← Ajout : le graphique en barres a aussi une largeur minimale */
 }
 
 .smallCharts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.875rem;
+  min-width: 900px;
 }
 
 .smallChart {
   border-radius: 0.3125rem;
   overflow: hidden;
+  min-width: 260px;
+  aspect-ratio: 1;
 }
 
 /* Colonne KeyData */
