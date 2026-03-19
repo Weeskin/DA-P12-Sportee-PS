@@ -21,7 +21,7 @@ const CustomTooltip = ({ active, payload }) => {
     const caloriesData = payload.find(item => item.dataKey === 'calories')
 
     return (
-      <div className={styles.tooltip}>
+      <div className={styles.tooltip} style={{ backgroundColor: '#E60000', color: '#FFFFFF', padding: '5px 10px', borderRadius: '5px' }}>
         {kilogramData && <span>{kilogramData.value}kg</span>}
         {caloriesData && <span>{caloriesData.value}kCal</span>}
       </div>
@@ -36,6 +36,11 @@ const CustomTooltip = ({ active, payload }) => {
  */
 function ActivityBarChart({ data }) {
   if (!data) return null
+
+  const legendMapping = {
+    kilogram: 'Poids (kg)',
+    calories: 'Calories brûlées (kCal)',
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -60,15 +65,11 @@ function ActivityBarChart({ data }) {
             iconType="circle"
             iconSize={8}
             formatter={(value) =>
-              value === 'kilogram' ? (
-                <span className={styles.legendLabel}>Poids (kg)</span>
-              ) : (
-                <span className={styles.legendLabel}>Calories brûlées (kCal)</span>
-              )
+              <span className={styles.legendLabel}>{legendMapping[value]}</span>
             }
           />
-          <Bar yAxisId="cal" dataKey="calories" name="calories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={7} />
           <Bar yAxisId="kg" dataKey="kilogram" name="kilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={7} />
+          <Bar yAxisId="cal" dataKey="calories" name="calories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={7} />
         </BarChart>
       </ResponsiveContainer>
     </div>
