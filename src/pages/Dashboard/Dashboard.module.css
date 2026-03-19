@@ -41,7 +41,7 @@
 }
 
 .iconBox:hover {
-  background-color: #E60000;
+  opacity: .7;
 }
 
 .iconBox img {

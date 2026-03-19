@@ -40,7 +40,7 @@ function ActivityBarChart({ data }) {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Activité quotidienne</h2>
-      <ResponsiveContainer width="100%" height={200}>
+      <ResponsiveContainer width="100%" height={200} backgroundColor={'#9B9EAC'}>
         <BarChart data={data} barGap={8} barCategoryGap="35%">
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#DEDEDE" />
           <XAxis dataKey="day" tickLine={false} axisLine={false} tick={{ fill: '#9B9EAC', fontSize: 14 }} />
@@ -67,8 +67,8 @@ function ActivityBarChart({ data }) {
               )
             }
           />
-          <Bar yAxisId="kg" dataKey="kilogram" name="kilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={7} />
           <Bar yAxisId="cal" dataKey="calories" name="calories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={7} />
+          <Bar yAxisId="kg" dataKey="kilogram" name="kilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={7} />
         </BarChart>
       </ResponsiveContainer>
     </div>
