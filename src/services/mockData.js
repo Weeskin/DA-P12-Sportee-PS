@@ -99,8 +99,8 @@ const USER_PERFORMANCE = [
   },
 ]
 
-export const getMockUserInfo = (id) => USER_MAIN_DATA.find((u) => u.id === id) ?? null
-export const getMockUserActivity = (id) => USER_ACTIVITY.find((u) => u.userId === id) ?? null
-export const getMockUserAverageSessions = (id) => USER_AVERAGE_SESSIONS.find((u) => u.userId === id) ?? null
-export const getMockUserPerformance = (id) => USER_PERFORMANCE.find((u) => u.userId === id) ?? null
+export const getMockUserInfo = (id) => USER_MAIN_DATA.find((user) => user.id === id) ?? null
+export const getMockUserActivity = (id) => USER_ACTIVITY.find((user) => user.userId === id) ?? null
+export const getMockUserAverageSessions = (id) => USER_AVERAGE_SESSIONS.find((user) => user.userId === id) ?? null
+export const getMockUserPerformance = (id) => USER_PERFORMANCE.find((user) => user.userId === id) ?? null
 

@@ -6,7 +6,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/user/12" />} />
+        <Route path="/"  element={<Navigate to="/user/12" />}/>
         <Route path="/user/:id" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

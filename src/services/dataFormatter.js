@@ -7,6 +7,7 @@
  * @returns {object} données normalisées
  */
 export function formatUserInfo(data) {
+  if (!data || !data.data) return [];
   return {
     ...data,
     todayScore: data.todayScore ?? data.score ?? 0,
@@ -21,6 +22,7 @@ export function formatUserInfo(data) {
  * @returns {Array}
  */
 export function formatActivity(data) {
+  if (!data || !data.data) return [];
   return data.sessions.map((session, index) => ({
     day: index + 1,
     kilogram: session.kilogram,
@@ -36,6 +38,7 @@ export function formatActivity(data) {
  * @returns {Array}
  */
 export function formatAverageSessions(data) {
+  if (!data || !data.data) return [];
   return data.sessions.map((session) => ({
     day: session.day,
     sessionLength: session.sessionLength,
@@ -50,6 +53,8 @@ export function formatAverageSessions(data) {
  * @returns {Array}
  */
 export function formatPerformance(data) {
+  if (!data || !data.data) return [];
+
   const translations = {
     cardio: 'Cardio',
     energy: 'Énergie',

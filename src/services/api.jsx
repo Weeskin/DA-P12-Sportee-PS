@@ -4,7 +4,7 @@ import { getMockUserInfo, getMockUserActivity, getMockUserAverageSessions, getMo
  * Mettre à true pour utiliser les données mockées (sans backend)
  * Mettre à false pour utiliser l'API réelle
  */
-const USE_MOCK = false
+const USE_MOCK = true
 
 const BASE_URL = '/user'
 
