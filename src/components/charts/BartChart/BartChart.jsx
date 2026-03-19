@@ -7,6 +7,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  ReferenceLine
 } from 'recharts'
 import styles from './BarChart.module.css'
 
@@ -21,7 +22,7 @@ const CustomTooltip = ({ active, payload }) => {
     const caloriesData = payload.find(item => item.dataKey === 'calories')
 
     return (
-      <div className={styles.tooltip} style={{ backgroundColor: '#E60000', color: '#FFFFFF', padding: '5px 10px', borderRadius: '5px' }}>
+      <div className={styles.tooltip} style={{ backgroundColor: '#E60000', color: '#FFFFFF', padding: '10px 10px',margin: '10px' }}>
         {kilogramData && <span>{kilogramData.value}kg</span>}
         {caloriesData && <span>{caloriesData.value}kCal</span>}
       </div>
@@ -34,17 +35,28 @@ const CustomTooltip = ({ active, payload }) => {
  * Graphique en barres — activité quotidienne (poids + calories)
  * @param {Array} data - sessions formatées par dataFormatter.formatActivity()
  */
-function ActivityBarChart({ data }) {
+export default function ActivityBarChart({ data }) {
   if (!data) return null
 
-  const legendMapping = {
-    kilogram: 'Poids (kg)',
-    calories: 'Calories brûlées (kCal)',
-  }
+  const legendData = [
+    { dataKey: 'kilogram', label: 'Poids (kg)' },
+    { dataKey: 'calories', label: 'Calories brûlées (kCal)' }
+  ]
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>Activité quotidienne</h2>
+      <div className={styles.headerContainer}>
+        <h2 className={styles.title}>Activité quotidienne</h2>
+        <div className={styles.legendContainer}>
+          {legendData.map((item, index) => (<div key={item.dataKey} className={styles.legendItem}>
+                <span
+                    className={styles.legendDot}
+                    style={{backgroundColor: item.dataKey === "kilogram" ? "#282D30" : "#E60000"}}
+                />
+                <span>{item.label}</span>
+              </div>))}
+        </div>
+      </div>
       <ResponsiveContainer width="100%" height={200} backgroundColor={'#9B9EAC'}>
         <BarChart data={data} barGap={8} barCategoryGap="35%">
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#DEDEDE" />
@@ -56,25 +68,16 @@ function ActivityBarChart({ data }) {
             axisLine={false}
             tick={{ fill: '#9B9EAC', fontSize: 14 }}
             domain={['dataMin - 1', 'dataMax + 1']}
+            tickCount={3}
           />
           <YAxis yAxisId="cal" orientation="left" hide />
+          <ReferenceLine strokeDasharray="3 3" yAxisId="kg" y={70} stroke="#DEDEDE" />
           <Tooltip content={<CustomTooltip />} />
-          <Legend
-            verticalAlign="top"
-            align="right"
-            iconType="circle"
-            iconSize={8}
-            formatter={(value) =>
-              <span className={styles.legendLabel}>{legendMapping[value]}</span>
-            }
-          />
-          <Bar yAxisId="kg" dataKey="kilogram" name="kilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={7} />
           <Bar yAxisId="cal" dataKey="calories" name="calories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={7} />
+          <Bar yAxisId="kg" dataKey="kilogram" name="kilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={7} />
         </BarChart>
       </ResponsiveContainer>
     </div>
   )
 }
-
-export default ActivityBarChart
 

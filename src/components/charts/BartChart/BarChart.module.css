@@ -8,7 +8,7 @@
   font-size: 0.9375rem;
   font-weight: 500;
   color: #282d30;
-  margin: 0 0 1.5rem;
+  margin: 0;
 }
 
 .tooltip {
@@ -23,9 +23,29 @@
   text-align: center;
 }
 
-.legendLabel {
-  font-size: 0.875rem;
-  color: #74798c;
-  font-weight: 500;
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.legendContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  color: #9B9EAC;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
 }
 
