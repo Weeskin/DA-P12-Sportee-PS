@@ -24,7 +24,8 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      'no-floating-promises':'off'
+      'no-floating-promises':'off',
+      'indent': ['error', 2]
     },
   },
 ])
