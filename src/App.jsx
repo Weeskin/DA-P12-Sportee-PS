@@ -13,7 +13,9 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Navigate to="/dashboard/12" />}
+          element={
+            <Navigate to="/dashboard/12" />
+          }
         />
         <Route
           path="/dashboard/:id"

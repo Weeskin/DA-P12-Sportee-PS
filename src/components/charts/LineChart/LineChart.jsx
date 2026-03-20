@@ -67,7 +67,7 @@ function AverageSessionsLineChart({ data }) {
       </h2>
       <ResponsiveContainer
         width="100%"
-        height={180}
+        height="72%"
       >
         <LineChart
           data={data}

@@ -26,7 +26,7 @@ export default function ScoreRadialChart({
       <div className={styles.chartContainer}>
         <ResponsiveContainer
           width="100%"
-          height={200}
+          height="100%"
         >
           <RadialBarChart
             cx="50%"

@@ -42,7 +42,11 @@ function Dashboard() {
   if (error?.status === 404) return <NotFound />;
 
   if (error) {
-    return <div className={styles.feedback}>{error.message}</div>;
+    return (
+      <div className={styles.feedback}>
+        {error.message}
+      </div>
+    );
   }
 
   const { firstName } = userInfo.userInfos;

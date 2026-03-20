@@ -29,3 +29,27 @@
 .nav a:hover {
   color: #e60000;
 }
+
+@media (max-width: 1200px) {
+  .header {
+    padding: 0 1rem;
+  }
+
+  .nav a {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    height: 4.75rem;
+  }
+
+  .logo {
+    height: 2.75rem;
+  }
+
+  .nav a {
+    font-size: 1.0625rem;
+  }
+}

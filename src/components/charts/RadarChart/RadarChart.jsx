@@ -18,7 +18,7 @@ function PerformanceRadarChart({ data }) {
     <div className={styles.wrapper}>
       <ResponsiveContainer
         width="100%"
-        height={250}
+        height="100%"
       >
         <RadarChart
           data={data}

@@ -23,3 +23,15 @@
   font-weight: 500;
   padding: 0.5rem;
 }
+
+@media (max-width: 1024px), (max-height: 780px) {
+  .wrapper {
+    padding-top: 1rem;
+  }
+
+  .title {
+    margin-left: 1rem;
+    font-size: 0.8125rem;
+    max-width: 7.5rem;
+  }
+}
