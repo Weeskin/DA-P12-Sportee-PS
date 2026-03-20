@@ -45,7 +45,7 @@ export default function ScoreRadialChart({
               cx="50%"
               cy="50%"
               r="80"
-              fill="#FbFbfb"
+              fill="#FFFFFF"
             />
           </RadialBarChart>
         </ResponsiveContainer>
