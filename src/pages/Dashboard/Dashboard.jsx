@@ -15,6 +15,7 @@ import caloriesIcon from '../../assets/icon/calories.svg';
 import proteinIcon from '../../assets/icon/protein.svg';
 import carbsIcon from '../../assets/icon/carbs.svg';
 import fatIcon from '../../assets/icon/fat.svg';
+import NotFound from '../NotFound/NotFound';
 
 function Dashboard() {
   const { id } = useParams();
@@ -38,15 +39,10 @@ function Dashboard() {
     );
   }
 
-  if (error || !userInfo) {
-    return (
-      <div className={styles.container}>
-        <Header />
-        <div className={styles.feedback}>
-          {error ?? 'Utilisateur introuvable.'}
-        </div>
-      </div>
-    );
+  if (error?.status === 404) return <NotFound />;
+
+  if (error) {
+    return <div className={styles.feedback}>{error.message}</div>;
   }
 
   const { firstName } = userInfo.userInfos;

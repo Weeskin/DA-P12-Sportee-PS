@@ -13,10 +13,10 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Navigate to="/user/12" />}
+          element={<Navigate to="/dashboard/12" />}
         />
         <Route
-          path="/user/:id"
+          path="/dashboard/:id"
           element={<Dashboard />}
         />
         <Route
