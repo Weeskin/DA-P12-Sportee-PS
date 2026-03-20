@@ -1,4 +1,12 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  Rectangle,
+} from 'recharts';
 import styles from './LineChart.module.css';
 
 /**
@@ -18,12 +26,32 @@ const CustomTooltip = ({ active, payload }) => {
 /**
  * Curseur personnalisé — assombrit la zone à droite du curseur
  */
-const CustomCursor = ({ points, width, height }) => {
+const CustomCursor = ({
+  points,
+  width,
+  height,
+}) => {
   const { x } = points[0];
-  return <Rectangle x={x} y={0} width={width} height={height + 100} fill="rgba(0,0,0,0.1)" />;
+  return (
+    <Rectangle
+      x={x}
+      y={0}
+      width={width}
+      height={height + 100}
+      fill="rgba(0,0,0,0.1)"
+    />
+  );
 };
 
-const DAY_LABELS = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+const DAY_LABELS = [
+  'L',
+  'M',
+  'M',
+  'J',
+  'V',
+  'S',
+  'D',
+];
 
 /**
  * Graphique linéaire — durée moyenne des sessions
@@ -34,25 +62,57 @@ function AverageSessionsLineChart({ data }) {
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>Durée moyenne des sessions</h2>
-      <ResponsiveContainer width="100%" height={180}>
-        <LineChart data={data} margin={{ top: 0, right: 10, bottom: 10, left: 10 }}>
+      <h2 className={styles.title}>
+        Durée moyenne des sessions
+      </h2>
+      <ResponsiveContainer
+        width="100%"
+        height={180}
+      >
+        <LineChart
+          data={data}
+          margin={{
+            top: 0,
+            right: 10,
+            bottom: 10,
+            left: 10,
+          }}
+        >
           <XAxis
             dataKey="day"
             tickLine={false}
             axisLine={false}
-            tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }}
-            tickFormatter={(day) => DAY_LABELS[day - 1] ?? ''}
+            tick={{
+              fill: 'rgba(255,255,255,0.7)',
+              fontSize: 12,
+            }}
+            tickFormatter={(day) =>
+              DAY_LABELS[day - 1] ?? ''
+            }
           />
-          <YAxis hide domain={['dataMin - 10', 'dataMax + 10']} />
-          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
+          <YAxis
+            hide
+            domain={[
+              'dataMin - 10',
+              'dataMax + 10',
+            ]}
+          />
+          <Tooltip
+            content={<CustomTooltip />}
+            cursor={<CustomCursor />}
+          />
           <Line
             type="monotone"
             dataKey="sessionLength"
             stroke="rgba(255,255,255,0.7)"
             strokeWidth={2}
             dot={false}
-            activeDot={{ r: 4, fill: '#ffffff', stroke: 'rgba(255,255,255,0.5)', strokeWidth: 8 }}
+            activeDot={{
+              r: 4,
+              fill: '#ffffff',
+              stroke: 'rgba(255,255,255,0.5)',
+              strokeWidth: 8,
+            }}
           />
         </LineChart>
       </ResponsiveContainer>

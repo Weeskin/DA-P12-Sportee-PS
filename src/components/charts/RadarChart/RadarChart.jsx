@@ -1,4 +1,10 @@
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  ResponsiveContainer,
+} from 'recharts';
 import styles from './RadarChart.module.css';
 
 /**
@@ -10,20 +16,39 @@ function PerformanceRadarChart({ data }) {
 
   return (
     <div className={styles.wrapper}>
-      <ResponsiveContainer width="100%" height={250}>
+      <ResponsiveContainer
+        width="100%"
+        height={250}
+      >
         <RadarChart
           data={data}
           outerRadius={90}
-          margin={{ top: 20, right: 30, bottom: 20, left: 30 }}
+          margin={{
+            top: 20,
+            right: 30,
+            bottom: 20,
+            left: 30,
+          }}
         >
-          <PolarGrid stroke="rgba(255,255,255,0.2)" radialLines={false} />
+          <PolarGrid
+            stroke="rgba(255,255,255,0.2)"
+            radialLines={false}
+          />
           <PolarAngleAxis
             dataKey="subject"
-            tick={{ fill: '#ffffff', fontSize: 12 }}
+            tick={{
+              fill: '#ffffff',
+              fontSize: 12,
+            }}
             tickLine={false}
             axisLine={false}
           />
-          <Radar dataKey="value" fill="#FF0101" fillOpacity={0.5} stroke="transparent" />
+          <Radar
+            dataKey="value"
+            fill="#FF0101"
+            fillOpacity={0.5}
+            stroke="transparent"
+          />
         </RadarChart>
       </ResponsiveContainer>
     </div>

@@ -19,9 +19,15 @@ const BASE_URL = '/user';
  * @returns {Promise<object>}
  */
 export async function getUserInfo(userId) {
-  if (USE_MOCK) return getMockUserInfo(Number(userId));
-  const response = await fetch(`${BASE_URL}/${userId}`);
-  if (!response.ok) throw new Error(`Utilisateur ${userId} introuvable`);
+  if (USE_MOCK)
+    return getMockUserInfo(Number(userId));
+  const response = await fetch(
+    `${BASE_URL}/${userId}`
+  );
+  if (!response.ok)
+    throw new Error(
+      `Utilisateur ${userId} introuvable`
+    );
   const json = await response.json();
   return json.data;
 }
@@ -32,9 +38,15 @@ export async function getUserInfo(userId) {
  * @returns {Promise<object>}
  */
 export async function getUserActivity(userId) {
-  if (USE_MOCK) return getMockUserActivity(Number(userId));
-  const response = await fetch(`${BASE_URL}/${userId}/activity`);
-  if (!response.ok) throw new Error(`Activité de l'utilisateur ${userId} introuvable`);
+  if (USE_MOCK)
+    return getMockUserActivity(Number(userId));
+  const response = await fetch(
+    `${BASE_URL}/${userId}/activity`
+  );
+  if (!response.ok)
+    throw new Error(
+      `Activité de l'utilisateur ${userId} introuvable`
+    );
   const json = await response.json();
   return json.data;
 }
@@ -44,10 +56,20 @@ export async function getUserActivity(userId) {
  * @param {number|string} userId
  * @returns {Promise<object>}
  */
-export async function getUserAverageSessions(userId) {
-  if (USE_MOCK) return getMockUserAverageSessions(Number(userId));
-  const response = await fetch(`${BASE_URL}/${userId}/average-sessions`);
-  if (!response.ok) throw new Error(`Sessions moyennes de l'utilisateur ${userId} introuvables`);
+export async function getUserAverageSessions(
+  userId
+) {
+  if (USE_MOCK)
+    return getMockUserAverageSessions(
+      Number(userId)
+    );
+  const response = await fetch(
+    `${BASE_URL}/${userId}/average-sessions`
+  );
+  if (!response.ok)
+    throw new Error(
+      `Sessions moyennes de l'utilisateur ${userId} introuvables`
+    );
   const json = await response.json();
   return json.data;
 }
@@ -58,9 +80,15 @@ export async function getUserAverageSessions(userId) {
  * @returns {Promise<object>}
  */
 export async function getUserPerformance(userId) {
-  if (USE_MOCK) return getMockUserPerformance(Number(userId));
-  const response = await fetch(`${BASE_URL}/${userId}/performance`);
-  if (!response.ok) throw new Error(`Performances de l'utilisateur ${userId} introuvables`);
+  if (USE_MOCK)
+    return getMockUserPerformance(Number(userId));
+  const response = await fetch(
+    `${BASE_URL}/${userId}/performance`
+  );
+  if (!response.ok)
+    throw new Error(
+      `Performances de l'utilisateur ${userId} introuvables`
+    );
   const json = await response.json();
   return json.data;
 }

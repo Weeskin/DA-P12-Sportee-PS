@@ -18,13 +18,22 @@ import fatIcon from '../../assets/icon/fat.svg';
 
 function Dashboard() {
   const { id } = useParams();
-  const { userInfo, activity, averageSessions, performance, isLoading, error } = useDashboard(id);
+  const {
+    userInfo,
+    activity,
+    averageSessions,
+    performance,
+    isLoading,
+    error,
+  } = useDashboard(id);
 
   if (isLoading) {
     return (
       <div className={styles.container}>
         <Header />
-        <div className={styles.feedback}>Chargement...</div>
+        <div className={styles.feedback}>
+          Chargement...
+        </div>
       </div>
     );
   }
@@ -33,13 +42,20 @@ function Dashboard() {
     return (
       <div className={styles.container}>
         <Header />
-        <div className={styles.feedback}>{error ?? 'Utilisateur introuvable.'}</div>
+        <div className={styles.feedback}>
+          {error ?? 'Utilisateur introuvable.'}
+        </div>
       </div>
     );
   }
 
   const { firstName } = userInfo.userInfos;
-  const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = userInfo.keyData;
+  const {
+    calorieCount,
+    proteinCount,
+    carbohydrateCount,
+    lipidCount,
+  } = userInfo.keyData;
 
   return (
     <div className={styles.container}>
@@ -48,25 +64,43 @@ function Dashboard() {
         <aside className={styles.sidebar}>
           <nav className={styles.nav}>
             <div className={styles.iconBox}>
-              <img src={yoga} alt="Yoga" />
+              <img
+                src={yoga}
+                alt="Yoga"
+              />
             </div>
             <div className={styles.iconBox}>
-              <img src={velo} alt="Vélo" />
+              <img
+                src={velo}
+                alt="Vélo"
+              />
             </div>
             <div className={styles.iconBox}>
-              <img src={natation} alt="Natation" />
+              <img
+                src={natation}
+                alt="Natation"
+              />
             </div>
             <div className={styles.iconBox}>
-              <img src={musculation} alt="Musculation" />
+              <img
+                src={musculation}
+                alt="Musculation"
+              />
             </div>
           </nav>
         </aside>
         <section className={styles.content}>
           <div className={styles.greeting}>
             <h1>
-              Bonjour <span className={styles.firstName}>{firstName}</span>
+              Bonjour{' '}
+              <span className={styles.firstName}>
+                {firstName}
+              </span>
             </h1>
-            <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+            <p>
+              Félicitation ! Vous avez explosé vos
+              objectifs hier 👏
+            </p>
           </div>
 
           <div className={styles.dashboard}>
@@ -74,19 +108,33 @@ function Dashboard() {
             <div className={styles.mainCol}>
               {/* Graphique barres — activité quotidienne */}
               <div className={styles.barChartBox}>
-                <ActivityBarChart data={activity} />
+                <ActivityBarChart
+                  data={activity}
+                />
               </div>
 
               {/* Ligne du bas : 3 petits graphiques */}
               <div className={styles.smallCharts}>
-                <div className={styles.smallChart}>
-                  <AverageSessionsLineChart data={averageSessions} />
+                <div
+                  className={styles.smallChart}
+                >
+                  <AverageSessionsLineChart
+                    data={averageSessions}
+                  />
                 </div>
-                <div className={styles.smallChart}>
-                  <PerformanceRadarChart data={performance} />
+                <div
+                  className={styles.smallChart}
+                >
+                  <PerformanceRadarChart
+                    data={performance}
+                  />
                 </div>
-                <div className={styles.smallChart}>
-                  <ScoreRadialChart score={userInfo.todayScore} />
+                <div
+                  className={styles.smallChart}
+                >
+                  <ScoreRadialChart
+                    score={userInfo.todayScore}
+                  />
                 </div>
               </div>
             </div>

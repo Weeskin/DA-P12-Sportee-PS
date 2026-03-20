@@ -4,7 +4,11 @@ import logo from '../../assets/icon/logo.svg';
 function Header() {
   return (
     <header className={styles.header}>
-      <img src={logo} alt="SportSee logo" className={styles.logo} />
+      <img
+        src={logo}
+        alt="SportSee logo"
+        className={styles.logo}
+      />
       <nav className={styles.nav}>
         <a href="#">Accueil</a>
         <a href="#">Profil</a>

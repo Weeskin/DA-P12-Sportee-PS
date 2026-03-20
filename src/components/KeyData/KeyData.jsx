@@ -10,12 +10,23 @@ import styles from './KeyData.module.css';
 function KeyData({ icon, iconBg, value, label }) {
   return (
     <div className={styles.card}>
-      <div className={styles.iconWrapper} style={{ backgroundColor: iconBg }}>
-        <img src={icon} alt={label} className={styles.icon} />
+      <div
+        className={styles.iconWrapper}
+        style={{ backgroundColor: iconBg }}
+      >
+        <img
+          src={icon}
+          alt={label}
+          className={styles.icon}
+        />
       </div>
       <div className={styles.info}>
-        <span className={styles.value}>{value}</span>
-        <span className={styles.label}>{label}</span>
+        <span className={styles.value}>
+          {value}
+        </span>
+        <span className={styles.label}>
+          {label}
+        </span>
       </div>
     </div>
   );

@@ -13,7 +13,9 @@ export default defineConfig({
           // Laisser passer seulement les requêtes API
           if (
             req.url.includes('/activity') ||
-            req.url.includes('/average-sessions') ||
+            req.url.includes(
+              '/average-sessions'
+            ) ||
             req.url.includes('/performance')
           ) {
             return null;
@@ -21,7 +23,9 @@ export default defineConfig({
           // Rediriger les pages vers index.html
           if (
             req.method === 'GET' &&
-            !req.url.match(/\.(js|jsx|ts|tsx|css|svg|png|jpg|gif|woff|woff2|eot|ttf)$/)
+            !req.url.match(
+              /\.(js|jsx|ts|tsx|css|svg|png|jpg|gif|woff|woff2|eot|ttf)$/
+            )
           ) {
             return '/index.html';
           }

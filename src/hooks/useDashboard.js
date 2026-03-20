@@ -19,9 +19,12 @@ import {
 export function useDashboard(userId) {
   const [userInfo, setUserInfo] = useState(null);
   const [activity, setActivity] = useState(null);
-  const [averageSessions, setAverageSessions] = useState(null);
-  const [performance, setPerformance] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [averageSessions, setAverageSessions] =
+    useState(null);
+  const [performance, setPerformance] =
+    useState(null);
+  const [isLoading, setIsLoading] =
+    useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -32,7 +35,12 @@ export function useDashboard(userId) {
       setError(null);
 
       try {
-        const [info, activityData, avgSessions, perf] = await Promise.all([
+        const [
+          info,
+          activityData,
+          avgSessions,
+          perf,
+        ] = await Promise.all([
           getUserInfo(userId),
           getUserActivity(userId),
           getUserAverageSessions(userId),
@@ -40,7 +48,9 @@ export function useDashboard(userId) {
         ]);
         setUserInfo(formatUserInfo(info));
         setActivity(formatActivity(activityData));
-        setAverageSessions(formatAverageSessions(avgSessions));
+        setAverageSessions(
+          formatAverageSessions(avgSessions)
+        );
         setPerformance(formatPerformance(perf));
       } catch (error) {
         setError(error);
@@ -52,5 +62,12 @@ export function useDashboard(userId) {
     fetchData();
   }, [userId]);
 
-  return { userInfo, activity, averageSessions, performance, isLoading, error };
+  return {
+    userInfo,
+    activity,
+    averageSessions,
+    performance,
+    isLoading,
+    error,
+  };
 }
