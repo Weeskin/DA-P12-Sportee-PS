@@ -1,13 +1,5 @@
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  Rectangle,
-} from 'recharts'
-import styles from './LineChart.module.css'
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
+import styles from './LineChart.module.css';
 
 /**
  * Tooltip personnalisé
@@ -18,27 +10,27 @@ const CustomTooltip = ({ active, payload }) => {
       <div className={styles.tooltip}>
         <span>{payload[0].value} min</span>
       </div>
-    )
+    );
   }
-  return null
-}
+  return null;
+};
 
 /**
  * Curseur personnalisé — assombrit la zone à droite du curseur
  */
 const CustomCursor = ({ points, width, height }) => {
-  const { x } = points[0]
-  return <Rectangle x={x} y={0} width={width} height={height + 100} fill="rgba(0,0,0,0.1)" />
-}
+  const { x } = points[0];
+  return <Rectangle x={x} y={0} width={width} height={height + 100} fill="rgba(0,0,0,0.1)" />;
+};
 
-const DAY_LABELS = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
+const DAY_LABELS = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
 /**
  * Graphique linéaire — durée moyenne des sessions
  * @param {Array} data - sessions formatées par dataFormatter.formatAverageSessions()
  */
 function AverageSessionsLineChart({ data }) {
-  if (!data) return null
+  if (!data) return null;
 
   return (
     <div className={styles.wrapper}>
@@ -65,8 +57,7 @@ function AverageSessionsLineChart({ data }) {
         </LineChart>
       </ResponsiveContainer>
     </div>
-  )
+  );
 }
 
-export default AverageSessionsLineChart
-
+export default AverageSessionsLineChart;

@@ -11,7 +11,7 @@ export function formatUserInfo(data) {
   return {
     ...data,
     todayScore: data.todayScore ?? data.score ?? 0,
-  }
+  };
 }
 
 /**
@@ -27,7 +27,7 @@ export function formatActivity(data) {
     day: index + 1,
     kilogram: session.kilogram,
     calories: session.calories,
-  }))
+  }));
 }
 
 /**
@@ -42,7 +42,7 @@ export function formatAverageSessions(data) {
   return data.sessions.map((session) => ({
     day: session.day,
     sessionLength: session.sessionLength,
-  }))
+  }));
 }
 
 /**
@@ -62,11 +62,23 @@ export function formatPerformance(data) {
     strength: 'Force',
     speed: 'Vitesse',
     intensity: 'Intensité',
-  }
+  };
 
-  return data.data.map((item) => ({
-    subject: translations[data.kind[item.kind]] ?? data.kind[item.kind],
-    value: item.value,
-  }))
+  const desiredOrder = ['intensity', 'speed', 'strength', 'endurance', 'energy', 'cardio'];
+
+  const order = Object.fromEntries(desiredOrder.map((k, i) => [k, i]));
+
+  return [...data.data]
+    .sort((a, b) => {
+      const aKey = data.kind[a.kind];
+      const bKey = data.kind[b.kind];
+      return (order[aKey] ?? 999) - (order[bKey] ?? 999);
+    })
+    .map((item) => {
+      const key = data.kind[item.kind];
+      return {
+        subject: translations[key] ?? key,
+        value: item.value,
+      };
+    });
 }
-

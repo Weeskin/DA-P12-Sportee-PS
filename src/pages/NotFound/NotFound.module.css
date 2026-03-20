@@ -10,7 +10,7 @@
 .code {
   font-size: 18rem;
   font-weight: 700;
-  color: #E60000;
+  color: #e60000;
   margin: 0;
   line-height: 1;
 }
@@ -30,6 +30,5 @@
 }
 
 .link:hover {
-  color: #E60000;
+  color: #e60000;
 }
-

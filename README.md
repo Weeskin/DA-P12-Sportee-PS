@@ -25,13 +25,13 @@ Interface utilisateur du projet **SportSee**, une application de suivi d'activit
 
 ## 🛠️ Stack technique
 
-| Outil | Version |
-|---|---|
-| React | 19 |
-| Vite | 7 |
-| React Router | 7 |
-| Recharts | — |
-| pnpm | — |
+| Outil        | Version |
+| ------------ | ------- |
+| React        | 19      |
+| Vite         | 7       |
+| React Router | 7       |
+| Recharts     | —       |
+| pnpm         | —       |
 
 ---
 
@@ -90,11 +90,11 @@ src/
 
 ## 🔗 Routes
 
-| Route | Description |
-|---|---|
-| `/` | Redirige vers `/user/12` |
+| Route       | Description                |
+| ----------- | -------------------------- |
+| `/`         | Redirige vers `/user/12`   |
 | `/user/:id` | Dashboard de l'utilisateur |
-| `*` | Page 404 |
+| `*`         | Page 404                   |
 
 ---
 

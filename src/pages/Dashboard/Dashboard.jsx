@@ -1,24 +1,24 @@
-import { useParams } from 'react-router-dom'
-import styles from './Dashboard.module.css'
-import Header from '../../components/Header/Header'
-import KeyData from '../../components/KeyData/KeyData'
-import ActivityBarChart from '../../components/charts/BarChart/BarChart'
-import AverageSessionsLineChart from '../../components/charts/LineChart/LineChart'
-import PerformanceRadarChart from '../../components/charts/RadarChart/RadarChart'
-import ScoreRadialChart from '../../components/charts/RadialChart/RadialChart'
-import { useDashboard } from '../../hooks/useDashboard'
-import yoga from '../../assets/icon/yoga.svg'
-import velo from '../../assets/icon/velo.svg'
-import natation from '../../assets/icon/natation.svg'
-import musculation from '../../assets/icon/musculation.svg'
-import caloriesIcon from '../../assets/icon/calories.svg'
-import proteinIcon from '../../assets/icon/protein.svg'
-import carbsIcon from '../../assets/icon/carbs.svg'
-import fatIcon from '../../assets/icon/fat.svg'
+import { useParams } from 'react-router-dom';
+import styles from './Dashboard.module.css';
+import Header from '../../components/Header/Header';
+import KeyData from '../../components/KeyData/KeyData';
+import ActivityBarChart from '../../components/charts/BarChart/BarChart';
+import AverageSessionsLineChart from '../../components/charts/LineChart/LineChart';
+import PerformanceRadarChart from '../../components/charts/RadarChart/RadarChart';
+import ScoreRadialChart from '../../components/charts/RadialChart/RadialChart';
+import { useDashboard } from '../../hooks/useDashboard';
+import yoga from '../../assets/icon/yoga.svg';
+import velo from '../../assets/icon/velo.svg';
+import natation from '../../assets/icon/natation.svg';
+import musculation from '../../assets/icon/musculation.svg';
+import caloriesIcon from '../../assets/icon/calories.svg';
+import proteinIcon from '../../assets/icon/protein.svg';
+import carbsIcon from '../../assets/icon/carbs.svg';
+import fatIcon from '../../assets/icon/fat.svg';
 
 function Dashboard() {
-  const { id } = useParams()
-  const { userInfo, activity, averageSessions, performance, isLoading, error } = useDashboard(id)
+  const { id } = useParams();
+  const { userInfo, activity, averageSessions, performance, isLoading, error } = useDashboard(id);
 
   if (isLoading) {
     return (
@@ -26,22 +26,20 @@ function Dashboard() {
         <Header />
         <div className={styles.feedback}>Chargement...</div>
       </div>
-    )
+    );
   }
 
   if (error || !userInfo) {
     return (
       <div className={styles.container}>
         <Header />
-        <div className={styles.feedback}>
-          {error ?? 'Utilisateur introuvable.'}
-        </div>
+        <div className={styles.feedback}>{error ?? 'Utilisateur introuvable.'}</div>
       </div>
-    )
+    );
   }
 
-  const { firstName } = userInfo.userInfos
-  const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = userInfo.keyData
+  const { firstName } = userInfo.userInfos;
+  const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = userInfo.keyData;
 
   return (
     <div className={styles.container}>
@@ -124,7 +122,7 @@ function Dashboard() {
         </section>
       </main>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

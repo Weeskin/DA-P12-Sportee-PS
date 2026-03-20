@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import styles from './NotFound.module.css'
+import { Link } from 'react-router-dom';
+import styles from './NotFound.module.css';
 
 function NotFound() {
   return (
@@ -10,8 +10,7 @@ function NotFound() {
         Retourner sur la page d'accueil
       </Link>
     </div>
-  )
+  );
 }
 
-export default NotFound
-
+export default NotFound;

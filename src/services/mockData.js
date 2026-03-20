@@ -16,18 +16,30 @@ const USER_MAIN_DATA = [
     score: 0.3,
     keyData: { calorieCount: 2500, proteinCount: 90, carbohydrateCount: 150, lipidCount: 120 },
   },
-]
+];
 
 const USER_ACTIVITY = [
   {
     userId: 12,
     sessions: [
       { day: '2020-07-01', kilogram: 80, calories: 240 },
-      { day: '2020-07-02', kilogram: 80, calories: 220 },
+      {
+        day: '2020-07-02',
+        kilogram: 80,
+        calories: 220,
+      },
       { day: '2020-07-03', kilogram: 81, calories: 280 },
-      { day: '2020-07-04', kilogram: 81, calories: 290 },
+      {
+        day: '2020-07-04',
+        kilogram: 81,
+        calories: 290,
+      },
       { day: '2020-07-05', kilogram: 80, calories: 160 },
-      { day: '2020-07-06', kilogram: 78, calories: 162 },
+      {
+        day: '2020-07-06',
+        kilogram: 78,
+        calories: 162,
+      },
       { day: '2020-07-07', kilogram: 76, calories: 390 },
     ],
   },
@@ -35,15 +47,27 @@ const USER_ACTIVITY = [
     userId: 18,
     sessions: [
       { day: '2020-07-01', kilogram: 70, calories: 240 },
-      { day: '2020-07-02', kilogram: 69, calories: 220 },
+      {
+        day: '2020-07-02',
+        kilogram: 69,
+        calories: 220,
+      },
       { day: '2020-07-03', kilogram: 70, calories: 280 },
-      { day: '2020-07-04', kilogram: 70, calories: 500 },
+      {
+        day: '2020-07-04',
+        kilogram: 70,
+        calories: 500,
+      },
       { day: '2020-07-05', kilogram: 69, calories: 160 },
-      { day: '2020-07-06', kilogram: 69, calories: 162 },
+      {
+        day: '2020-07-06',
+        kilogram: 69,
+        calories: 162,
+      },
       { day: '2020-07-07', kilogram: 69, calories: 390 },
     ],
   },
-]
+];
 
 const USER_AVERAGE_SESSIONS = [
   {
@@ -52,7 +76,10 @@ const USER_AVERAGE_SESSIONS = [
       { day: 1, sessionLength: 30 },
       { day: 2, sessionLength: 23 },
       { day: 3, sessionLength: 45 },
-      { day: 4, sessionLength: 50 },
+      {
+        day: 4,
+        sessionLength: 50,
+      },
       { day: 5, sessionLength: 0 },
       { day: 6, sessionLength: 0 },
       { day: 7, sessionLength: 60 },
@@ -64,13 +91,16 @@ const USER_AVERAGE_SESSIONS = [
       { day: 1, sessionLength: 30 },
       { day: 2, sessionLength: 40 },
       { day: 3, sessionLength: 50 },
-      { day: 4, sessionLength: 30 },
+      {
+        day: 4,
+        sessionLength: 30,
+      },
       { day: 5, sessionLength: 30 },
       { day: 6, sessionLength: 50 },
       { day: 7, sessionLength: 50 },
     ],
   },
-]
+];
 
 const USER_PERFORMANCE = [
   {
@@ -81,7 +111,10 @@ const USER_PERFORMANCE = [
       { value: 120, kind: 2 },
       { value: 140, kind: 3 },
       { value: 50, kind: 4 },
-      { value: 200, kind: 5 },
+      {
+        value: 200,
+        kind: 5,
+      },
       { value: 90, kind: 6 },
     ],
   },
@@ -93,14 +126,18 @@ const USER_PERFORMANCE = [
       { value: 240, kind: 2 },
       { value: 80, kind: 3 },
       { value: 80, kind: 4 },
-      { value: 220, kind: 5 },
+      {
+        value: 220,
+        kind: 5,
+      },
       { value: 110, kind: 6 },
     ],
   },
-]
+];
 
-export const getMockUserInfo = (id) => USER_MAIN_DATA.find((user) => user.id === id) ?? null
-export const getMockUserActivity = (id) => USER_ACTIVITY.find((user) => user.userId === id) ?? null
-export const getMockUserAverageSessions = (id) => USER_AVERAGE_SESSIONS.find((user) => user.userId === id) ?? null
-export const getMockUserPerformance = (id) => USER_PERFORMANCE.find((user) => user.userId === id) ?? null
-
+export const getMockUserInfo = (id) => USER_MAIN_DATA.find((user) => user.id === id) ?? null;
+export const getMockUserActivity = (id) => USER_ACTIVITY.find((user) => user.userId === id) ?? null;
+export const getMockUserAverageSessions = (id) =>
+  USER_AVERAGE_SESSIONS.find((user) => user.userId === id) ?? null;
+export const getMockUserPerformance = (id) =>
+  USER_PERFORMANCE.find((user) => user.userId === id) ?? null;

@@ -1,5 +1,5 @@
-import styles from './Header.module.css'
-import logo from '../../assets/icon/logo.svg'
+import styles from './Header.module.css';
+import logo from '../../assets/icon/logo.svg';
 
 function Header() {
   return (
@@ -12,8 +12,7 @@ function Header() {
         <a href="#">Communauté</a>
       </nav>
     </header>
-  )
+  );
 }
 
-export default Header
-
+export default Header;

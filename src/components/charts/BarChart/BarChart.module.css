@@ -43,7 +43,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 14px;
-  color: #9B9EAC;
+  color: #9b9eac;
 }
 
 .legendDot {
@@ -51,4 +51,3 @@
   height: 8px;
   border-radius: 50%;
 }
-
