@@ -1,70 +1,70 @@
 .wrapper {
-  position: relative;
-  width: 100%;
-  background-color: var(--color-background);
-  border-radius: var(--border-radius);
-  padding: 1rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  position         : relative;
+  width            : 100%;
+  background-color : var(--color-background);
+  border-radius    : var(--border-radius);
+  padding          : 1rem;
+  height           : 100%;
+  display          : flex;
+  flex-direction   : column;
+  align-items      : center;
+  justify-content  : flex-start;
 }
 
 .title {
-  margin: 0 0 0.75rem;
-  font-size: 1rem;
-  font-weight: bold;
-  width: 100%;
-  text-align: left;
+  margin      : 0 0 0.75rem;
+  font-size   : 1rem;
+  font-weight : bold;
+  width       : 100%;
+  text-align  : left;
 }
 
 .chartContainer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: min(100%, 12.5rem);
-  width: min(100%, 12.5rem);
-  flex: 1;
-  aspect-ratio: 1 / 1;
+  position        : relative;
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  height          : min(100%, 12.5rem);
+  width           : min(100%, 12.5rem);
+  flex            : 1;
+  aspect-ratio    : 1 / 1;
 }
 
 .center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  text-align: center;
-  z-index: 10;
+  position       : absolute;
+  top            : 50%;
+  left           : 50%;
+  transform      : translate(-50%, -50%);
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  gap            : 8px;
+  text-align     : center;
+  z-index        : 10;
 }
 
 .percent {
-  font-size: 24px;
-  font-weight: bold;
-  color: #000;
+  font-size   : 24px;
+  font-weight : bold;
+  color       : #000;
 }
 
 .label {
-  font-size: 14px;
-  color: #74798c;
+  font-size : 14px;
+  color     : #74798c;
 }
 
-@media (max-width: 1024px), (max-height: 780px) {
+@media (max-width : 1024px), (max-height : 780px) {
   .title {
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
+    margin-bottom : 0.5rem;
+    font-size     : 0.875rem;
   }
 
   .percent {
-    font-size: 1.125rem;
+    font-size : 1.125rem;
   }
 
   .label {
-    font-size: 0.75rem;
+    font-size : 0.75rem;
   }
 }

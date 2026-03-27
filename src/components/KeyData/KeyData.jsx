@@ -1,4 +1,4 @@
-import styles from './KeyData.module.css';
+import styles from "./KeyData.module.css";
 
 /**
  * Affiche une donnée clé (calories, protéines, glucides, lipides)
@@ -21,12 +21,8 @@ function KeyData({ icon, iconBg, value, label }) {
         />
       </div>
       <div className={styles.info}>
-        <span className={styles.value}>
-          {value}
-        </span>
-        <span className={styles.label}>
-          {label}
-        </span>
+        <span className={styles.value}>{value}</span>
+        <span className={styles.label}>{label}</span>
       </div>
     </div>
   );

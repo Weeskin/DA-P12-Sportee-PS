@@ -1,40 +1,33 @@
-import { useParams } from 'react-router-dom';
-import styles from './Dashboard.module.css';
-import Header from '../../components/Header/Header';
-import KeyData from '../../components/KeyData/KeyData';
-import ActivityBarChart from '../../components/charts/BarChart/BarChart';
-import AverageSessionsLineChart from '../../components/charts/LineChart/LineChart';
-import PerformanceRadarChart from '../../components/charts/RadarChart/RadarChart';
-import ScoreRadialChart from '../../components/charts/RadialChart/RadialChart';
-import { useDashboard } from '../../hooks/useDashboard';
-import yoga from '../../assets/icon/yoga.svg';
-import velo from '../../assets/icon/velo.svg';
-import natation from '../../assets/icon/natation.svg';
-import musculation from '../../assets/icon/musculation.svg';
-import caloriesIcon from '../../assets/icon/calories.svg';
-import proteinIcon from '../../assets/icon/protein.svg';
-import carbsIcon from '../../assets/icon/carbs.svg';
-import fatIcon from '../../assets/icon/fat.svg';
-import NotFound from '../NotFound/NotFound';
+import { useParams } from "react-router-dom";
+import styles from "./Dashboard.module.css";
+import Header from "../../components/Header/Header";
+import KeyData from "../../components/KeyData/KeyData";
+import ActivityBarChart from "../../components/charts/BarChart/BarChart";
+import AverageSessionsLineChart from "../../components/charts/LineChart/LineChart";
+import PerformanceRadarChart from "../../components/charts/RadarChart/RadarChart";
+import ScoreRadialChart from "../../components/charts/RadialChart/RadialChart";
+import { useDashboard } from "../../hooks/useDashboard";
+import yoga from "../../assets/icon/yoga.svg";
+import velo from "../../assets/icon/velo.svg";
+import natation from "../../assets/icon/natation.svg";
+import musculation from "../../assets/icon/musculation.svg";
+import caloriesIcon from "../../assets/icon/calories.svg";
+import proteinIcon from "../../assets/icon/protein.svg";
+import carbsIcon from "../../assets/icon/carbs.svg";
+import fatIcon from "../../assets/icon/fat.svg";
+import NotFound from "../NotFound/NotFound";
+import InternalError from "../InternalError/InternalError";
 
 function Dashboard() {
   const { id } = useParams();
-  const {
-    userInfo,
-    activity,
-    averageSessions,
-    performance,
-    isLoading,
-    error,
-  } = useDashboard(id);
+  const { userInfo, activity, averageSessions, performance, isLoading, error } =
+    useDashboard(id);
 
   if (isLoading) {
     return (
       <div className={styles.container}>
         <Header />
-        <div className={styles.feedback}>
-          Chargement...
-        </div>
+        <div className={styles.feedback}>Chargement...</div>
       </div>
     );
   }
@@ -43,19 +36,48 @@ function Dashboard() {
 
   if (error) {
     return (
-      <div className={styles.feedback}>
-        {error.message}
+      <div className={styles.container}>
+        <Header />
+        <main className={styles.main}>
+          <aside className={styles.sidebar}>
+            <nav className={styles.nav}>
+              <div className={styles.iconBox}>
+                <img
+                  src={yoga}
+                  alt="Yoga"
+                />
+              </div>
+              <div className={styles.iconBox}>
+                <img
+                  src={velo}
+                  alt="Vélo"
+                />
+              </div>
+              <div className={styles.iconBox}>
+                <img
+                  src={natation}
+                  alt="Natation"
+                />
+              </div>
+              <div className={styles.iconBox}>
+                <img
+                  src={musculation}
+                  alt="Musculation"
+                />
+              </div>
+            </nav>
+          </aside>
+          <section className={styles.content}>
+            <InternalError />
+          </section>
+        </main>
       </div>
     );
   }
 
   const { firstName } = userInfo.userInfos;
-  const {
-    calorieCount,
-    proteinCount,
-    carbohydrateCount,
-    lipidCount,
-  } = userInfo.keyData;
+  const { calorieCount, proteinCount, carbohydrateCount, lipidCount } =
+    userInfo.keyData;
 
   return (
     <div className={styles.container}>
@@ -92,15 +114,9 @@ function Dashboard() {
         <section className={styles.content}>
           <div className={styles.greeting}>
             <h1>
-              Bonjour{' '}
-              <span className={styles.firstName}>
-                {firstName}
-              </span>
+              Bonjour <span className={styles.firstName}>{firstName}</span>
             </h1>
-            <p>
-              Félicitation ! Vous avez explosé vos
-              objectifs hier 👏
-            </p>
+            <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
           </div>
 
           <div className={styles.dashboard}>
@@ -108,33 +124,19 @@ function Dashboard() {
             <div className={styles.mainCol}>
               {/* Graphique barres — activité quotidienne */}
               <div className={styles.barChartBox}>
-                <ActivityBarChart
-                  data={activity}
-                />
+                <ActivityBarChart data={activity} />
               </div>
 
               {/* Ligne du bas : 3 petits graphiques */}
               <div className={styles.smallCharts}>
-                <div
-                  className={styles.smallChart}
-                >
-                  <AverageSessionsLineChart
-                    data={averageSessions}
-                  />
+                <div className={styles.smallChart}>
+                  <AverageSessionsLineChart data={averageSessions} />
                 </div>
-                <div
-                  className={styles.smallChart}
-                >
-                  <PerformanceRadarChart
-                    data={performance}
-                  />
+                <div className={styles.smallChart}>
+                  <PerformanceRadarChart data={performance} />
                 </div>
-                <div
-                  className={styles.smallChart}
-                >
-                  <ScoreRadialChart
-                    score={userInfo.todayScore}
-                  />
+                <div className={styles.smallChart}>
+                  <ScoreRadialChart score={userInfo.todayScore} />
                 </div>
               </div>
             </div>
@@ -144,7 +146,7 @@ function Dashboard() {
               <KeyData
                 icon={caloriesIcon}
                 iconBg="rgba(255, 0, 0, 0.07)"
-                value={`${calorieCount.toLocaleString('en-US')}kCal`}
+                value={`${calorieCount.toLocaleString("en-US")}kCal`}
                 label="Calories"
               />
               <KeyData

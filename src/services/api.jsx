@@ -3,7 +3,8 @@ import {
   getMockUserActivity,
   getMockUserAverageSessions,
   getMockUserPerformance,
-} from './mockData.js';
+} from "./mockData.js";
+import { status } from "http-status";
 
 /**
  * Mettre à true pour utiliser les données mockées (sans backend)
@@ -11,13 +12,10 @@ import {
  */
 const USE_MOCK = false;
 
-const BASE_URL = '/user';
+const BASE_URL = "/user";
 
-const INTERNAL_ERROR_MESSAGE =
-  'Internal Error - Merci de réessayer plus tard';
-
-function buildApiError(status, message) {
-  const err = new Error(message);
+function buildApiError(status) {
+  const err = new Error();
   err.status = status;
   return err;
 }
@@ -29,30 +27,21 @@ async function fetchApi(path, notFoundMessage) {
   try {
     response = await fetch(`${BASE_URL}${path}`);
   } catch {
-    throw buildApiError(
-      0,
-      INTERNAL_ERROR_MESSAGE
-    );
+    throw buildApiError(0);
   }
 
   // 2) Erreur HTTP
   if (!response.ok) {
-    if (response.status >= 500) {
+    if (response.status === status.INTERNAL_SERVER_ERROR) {
+      throw buildApiError(response.status);
+    }
+    if (response.status === status.NOT_FOUND) {
       throw buildApiError(
-        response.status,
-        INTERNAL_ERROR_MESSAGE
+        status.NOT_FOUND,
+        notFoundMessage || "Ressource introuvable"
       );
     }
-    if (response.status === 404) {
-      throw buildApiError(
-        404,
-        notFoundMessage || 'Ressource introuvable'
-      );
-    }
-    throw buildApiError(
-      response.status,
-      'Erreur de récupération des données.'
-    );
+    throw buildApiError(response.status, "Erreur de récupération des données.");
   }
 
   // 3) Succès
@@ -66,12 +55,8 @@ async function fetchApi(path, notFoundMessage) {
  * @returns {Promise<object>}
  */
 export async function getUserInfo(userId) {
-  if (USE_MOCK)
-    return getMockUserInfo(Number(userId));
-  return fetchApi(
-    `/${userId}`,
-    `Utilisateur ${userId} introuvable`
-  );
+  if (USE_MOCK) return getMockUserInfo(Number(userId));
+  return fetchApi(`/${userId}`, `Utilisateur ${userId} introuvable`);
 }
 
 /**
@@ -80,8 +65,7 @@ export async function getUserInfo(userId) {
  * @returns {Promise<object>}
  */
 export async function getUserActivity(userId) {
-  if (USE_MOCK)
-    return getMockUserActivity(Number(userId));
+  if (USE_MOCK) return getMockUserActivity(Number(userId));
   return fetchApi(
     `/${userId}/activity`,
     `Activité de l'utilisateur ${userId} introuvable`
@@ -93,13 +77,8 @@ export async function getUserActivity(userId) {
  * @param {number|string} userId
  * @returns {Promise<object>}
  */
-export async function getUserAverageSessions(
-  userId
-) {
-  if (USE_MOCK)
-    return getMockUserAverageSessions(
-      Number(userId)
-    );
+export async function getUserAverageSessions(userId) {
+  if (USE_MOCK) return getMockUserAverageSessions(Number(userId));
   return fetchApi(
     `/${userId}/average-sessions`,
     `Sessions moyennes de l'utilisateur ${userId} introuvables`
@@ -112,8 +91,7 @@ export async function getUserAverageSessions(
  * @returns {Promise<object>}
  */
 export async function getUserPerformance(userId) {
-  if (USE_MOCK)
-    return getMockUserPerformance(Number(userId));
+  if (USE_MOCK) return getMockUserPerformance(Number(userId));
   return fetchApi(
     `/${userId}/performance`,
     `Performances de l'utilisateur ${userId} introuvables`

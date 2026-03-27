@@ -1,11 +1,6 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom';
-import Dashboard from './pages/Dashboard/Dashboard';
-import NotFound from './pages/NotFound/NotFound';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -13,9 +8,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <Navigate to="/dashboard/12" />
-          }
+          element={<Navigate to="/dashboard/12" />}
         />
         <Route
           path="/dashboard/:id"

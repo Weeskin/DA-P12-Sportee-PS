@@ -10,8 +10,7 @@ export function formatUserInfo(data) {
   if (!data) return null;
   return {
     ...data,
-    todayScore:
-      data.todayScore ?? data.score ?? 0,
+    todayScore: data.todayScore ?? data.score ?? 0,
   };
 }
 
@@ -57,35 +56,30 @@ export function formatPerformance(data) {
   if (!data || !data.data) return [];
 
   const translations = {
-    cardio: 'Cardio',
-    energy: 'Énergie',
-    endurance: 'Endurance',
-    strength: 'Force',
-    speed: 'Vitesse',
-    intensity: 'Intensité',
+    cardio: "Cardio",
+    energy: "Énergie",
+    endurance: "Endurance",
+    strength: "Force",
+    speed: "Vitesse",
+    intensity: "Intensité",
   };
 
   const desiredOrder = [
-    'intensity',
-    'speed',
-    'strength',
-    'endurance',
-    'energy',
-    'cardio',
+    "intensity",
+    "speed",
+    "strength",
+    "endurance",
+    "energy",
+    "cardio",
   ];
 
-  const order = Object.fromEntries(
-    desiredOrder.map((k, i) => [k, i])
-  );
+  const order = Object.fromEntries(desiredOrder.map((k, i) => [k, i]));
 
   return [...data.data]
     .sort((a, b) => {
       const aKey = data.kind[a.kind];
       const bKey = data.kind[b.kind];
-      return (
-        (order[aKey] ?? 999) -
-        (order[bKey] ?? 999)
-      );
+      return (order[aKey] ?? 999) - (order[bKey] ?? 999);
     })
     .map((item) => {
       const key = data.kind[item.kind];

@@ -8,8 +8,8 @@ import {
   Legend,
   ResponsiveContainer,
   ReferenceLine,
-} from 'recharts';
-import styles from './BarChart.module.css';
+} from "recharts";
+import styles from "./BarChart.module.css";
 
 /**
  * Tooltip personnalisé pour le graphique d'activité
@@ -17,29 +17,21 @@ import styles from './BarChart.module.css';
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     // Trouver les données pour kilogram et calories
-    const kilogramData = payload.find(
-      (item) => item.dataKey === 'kilogram'
-    );
-    const caloriesData = payload.find(
-      (item) => item.dataKey === 'calories'
-    );
+    const kilogramData = payload.find((item) => item.dataKey === "kilogram");
+    const caloriesData = payload.find((item) => item.dataKey === "calories");
 
     return (
       <div
         className={styles.tooltip}
         style={{
-          backgroundColor: '#E60000',
-          color: '#FFFFFF',
-          padding: '10px 10px',
-          margin: '10px',
+          backgroundColor: "#E60000",
+          color: "#FFFFFF",
+          padding: "10px 10px",
+          margin: "10px",
         }}
       >
-        {kilogramData && (
-          <span>{kilogramData.value}kg</span>
-        )}
-        {caloriesData && (
-          <span>{caloriesData.value}kCal</span>
-        )}
+        {kilogramData && <span>{kilogramData.value}kg</span>}
+        {caloriesData && <span>{caloriesData.value}kCal</span>}
       </div>
     );
   }
@@ -50,25 +42,21 @@ const CustomTooltip = ({ active, payload }) => {
  * Graphique en barres — activité quotidienne (poids + calories)
  * @param {Array} data - sessions formatées par dataFormatter.formatActivity()
  */
-export default function ActivityBarChart({
-  data,
-}) {
+export default function ActivityBarChart({ data }) {
   if (!data) return null;
 
   const legendData = [
-    { dataKey: 'kilogram', label: 'Poids (kg)' },
+    { dataKey: "kilogram", label: "Poids (kg)" },
     {
-      dataKey: 'calories',
-      label: 'Calories brûlées (kCal)',
+      dataKey: "calories",
+      label: "Calories brûlées (kCal)",
     },
   ];
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.headerContainer}>
-        <h2 className={styles.title}>
-          Activité quotidienne
-        </h2>
+        <h2 className={styles.title}>Activité quotidienne</h2>
         <div className={styles.legendContainer}>
           {legendData.map((item) => (
             <div
@@ -79,9 +67,7 @@ export default function ActivityBarChart({
                 className={styles.legendDot}
                 style={{
                   backgroundColor:
-                    item.dataKey === 'kilogram'
-                      ? '#282D30'
-                      : '#E60000',
+                    item.dataKey === "kilogram" ? "#282D30" : "#E60000",
                 }}
               />
               <span>{item.label}</span>
@@ -92,7 +78,7 @@ export default function ActivityBarChart({
       <ResponsiveContainer
         width="100%"
         height={200}
-        backgroundColor={'#9B9EAC'}
+        backgroundColor={"#9B9EAC"}
       >
         <BarChart
           data={data}
@@ -114,7 +100,7 @@ export default function ActivityBarChart({
             tickLine={false}
             axisLine={false}
             tick={{
-              fill: '#9B9EAC',
+              fill: "#9B9EAC",
               fontSize: 14,
             }}
           />
@@ -124,13 +110,10 @@ export default function ActivityBarChart({
             tickLine={false}
             axisLine={false}
             tick={{
-              fill: '#9B9EAC',
+              fill: "#9B9EAC",
               fontSize: 14,
             }}
-            domain={[
-              'dataMin - 1',
-              'dataMax + 1',
-            ]}
+            domain={["dataMin - 1", "dataMax + 1"]}
             tickCount={3}
           />
           <YAxis

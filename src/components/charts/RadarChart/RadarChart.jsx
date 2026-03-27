@@ -4,8 +4,8 @@ import {
   PolarGrid,
   PolarAngleAxis,
   ResponsiveContainer,
-} from 'recharts';
-import styles from './RadarChart.module.css';
+} from "recharts";
+import styles from "./RadarChart.module.css";
 
 /**
  * Graphique radar — performances sportives
@@ -22,7 +22,7 @@ function PerformanceRadarChart({ data }) {
       >
         <RadarChart
           data={data}
-          outerRadius={90}
+          outerRadius="85%"
           margin={{
             top: 20,
             right: 30,
@@ -31,13 +31,13 @@ function PerformanceRadarChart({ data }) {
           }}
         >
           <PolarGrid
-            stroke="rgba(255,255,255,0.2)"
+            stroke="rgba(255,255,255)"
             radialLines={false}
           />
           <PolarAngleAxis
             dataKey="subject"
             tick={{
-              fill: '#ffffff',
+              fill: "#ffffff",
               fontSize: 12,
             }}
             tickLine={false}
@@ -46,7 +46,7 @@ function PerformanceRadarChart({ data }) {
           <Radar
             dataKey="value"
             fill="#FF0101"
-            fillOpacity={0.5}
+            fillOpacity={0.7}
             stroke="transparent"
           />
         </RadarChart>

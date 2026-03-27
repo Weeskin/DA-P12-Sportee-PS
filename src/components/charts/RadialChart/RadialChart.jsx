@@ -1,23 +1,14 @@
-import {
-  RadialBarChart,
-  RadialBar,
-  ResponsiveContainer,
-} from 'recharts';
-import styles from './RadialChart.module.css';
+import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
+import styles from "./RadialChart.module.css";
 
 /**
  * Graphique radial — score de l'objectif atteint aujourd'hui
  * @param {number} score - valeur entre 0 et 1 (ex: 0.12 = 12%)
  */
-export default function ScoreRadialChart({
-  score,
-}) {
-  if (score === undefined || score === null)
-    return null;
+export default function ScoreRadialChart({ score }) {
+  if (score === undefined || score === null) return null;
 
-  const data = [
-    { value: score * 100, fill: '#E60000' },
-  ];
+  const data = [{ value: score * 100, fill: "#E60000" }];
   const percent = Math.round(score * 100);
 
   return (
@@ -31,7 +22,7 @@ export default function ScoreRadialChart({
           <RadialBarChart
             cx="50%"
             cy="50%"
-            innerRadius={70}
+            innerRadius={75}
             outerRadius={90}
             startAngle={90}
             endAngle={90 + 360 * score}
@@ -50,12 +41,8 @@ export default function ScoreRadialChart({
           </RadialBarChart>
         </ResponsiveContainer>
         <div className={styles.center}>
-          <span className={styles.percent}>
-            {percent}%
-          </span>
-          <span className={styles.label}>
-            de votre objectif
-          </span>
+          <span className={styles.percent}>{percent}%</span>
+          <span className={styles.label}>de votre objectif</span>
         </div>
       </div>
     </div>

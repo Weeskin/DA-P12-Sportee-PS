@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   getUserInfo,
   getUserActivity,
   getUserAverageSessions,
   getUserPerformance,
-} from '../services/api';
+} from "../services/api";
 import {
   formatUserInfo,
   formatActivity,
   formatAverageSessions,
   formatPerformance,
-} from '../services/dataFormatter';
+} from "../services/dataFormatter";
 
 /**
  * Hook qui charge toutes les données nécessaires au Dashboard pour un utilisateur donné.
@@ -19,12 +19,9 @@ import {
 export function useDashboard(userId) {
   const [userInfo, setUserInfo] = useState(null);
   const [activity, setActivity] = useState(null);
-  const [averageSessions, setAverageSessions] =
-    useState(null);
-  const [performance, setPerformance] =
-    useState(null);
-  const [isLoading, setIsLoading] =
-    useState(true);
+  const [averageSessions, setAverageSessions] = useState(null);
+  const [performance, setPerformance] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -35,12 +32,7 @@ export function useDashboard(userId) {
       setError(null);
 
       try {
-        const [
-          info,
-          activityData,
-          avgSessions,
-          perf,
-        ] = await Promise.all([
+        const [info, activityData, avgSessions, perf] = await Promise.all([
           getUserInfo(userId),
           getUserActivity(userId),
           getUserAverageSessions(userId),
@@ -48,9 +40,7 @@ export function useDashboard(userId) {
         ]);
         setUserInfo(formatUserInfo(info));
         setActivity(formatActivity(activityData));
-        setAverageSessions(
-          formatAverageSessions(avgSessions)
-        );
+        setAverageSessions(formatAverageSessions(avgSessions));
         setPerformance(formatPerformance(perf));
       } catch (error) {
         setError(error);

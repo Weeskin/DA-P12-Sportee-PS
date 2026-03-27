@@ -5,14 +5,14 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  ResponsiveContainer
+  ResponsiveContainer,
 } from "recharts";
 import styles from "./LineChart.module.css";
 
 /**
  * Tooltip personnalisé
  */
-const CustomTooltip = ({active, payload}) => {
+const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <div className={styles.tooltip}>
@@ -24,27 +24,19 @@ const CustomTooltip = ({active, payload}) => {
 };
 
 const CHART_MARGIN = {
-  top   : 56,
-  right : 10,
+  top: 56,
+  right: 10,
   bottom: 20,
-  left  : 10
+  left: 10,
 };
 
-const DAY_LABELS = [
-  "L",
-  "M",
-  "M",
-  "J",
-  "V",
-  "S",
-  "D"
-];
+const DAY_LABELS = ["L", "M", "M", "J", "V", "S", "D"];
 
 /**
  * Graphique linéaire — durée moyenne des sessions
  * @param {Array} data - sessions formatées par dataFormatter.formatAverageSessions()
  */
-function AverageSessionsLineChart({data}) {
+function AverageSessionsLineChart({ data }) {
   const [cursorX, setCursorX] = useState(null);
 
   if (!data) return null;
@@ -54,15 +46,10 @@ function AverageSessionsLineChart({data}) {
       <div
         className={styles.cursorOverlay}
         style={{
-          left:
-            cursorX === null
-              ? "100%"
-              : `${cursorX}px`
+          left: cursorX === null ? "100%" : `${cursorX}px`,
         }}
       />
-      <h2 className={styles.title}>
-        Durée moyenne des sessions
-      </h2>
+      <h2 className={styles.title}>Durée moyenne des sessions</h2>
       <div className={styles.chartArea}>
         <ResponsiveContainer
           width="100%"
@@ -72,13 +59,8 @@ function AverageSessionsLineChart({data}) {
             data={data}
             margin={CHART_MARGIN}
             onMouseMove={(state) => {
-              if (
-                state?.isTooltipActive &&
-                state.activeCoordinate
-              ) {
-                setCursorX(
-                  state.activeCoordinate.x
-                );
+              if (state?.isTooltipActive && state.activeCoordinate) {
+                setCursorX(state.activeCoordinate.x);
                 return;
               }
               setCursorX(null);
@@ -90,22 +72,17 @@ function AverageSessionsLineChart({data}) {
               tickLine={false}
               axisLine={false}
               tick={{
-                fill    : "rgba(255,255,255,0.7)",
-                fontSize: 12
+                fill: "rgba(255,255,255,0.7)",
+                fontSize: 12,
               }}
-              tickFormatter={(day) =>
-                DAY_LABELS[day - 1] ?? ""
-              }
+              tickFormatter={(day) => DAY_LABELS[day - 1] ?? ""}
             />
             <YAxis
               hide
-              domain={[
-                "dataMin - 10",
-                "dataMax + 10"
-              ]}
+              domain={["dataMin - 10", "dataMax + 10"]}
             />
             <Tooltip
-              content={<CustomTooltip/>}
+              content={<CustomTooltip />}
               cursor={false}
             />
             <Line
@@ -115,10 +92,10 @@ function AverageSessionsLineChart({data}) {
               strokeWidth={2}
               dot={false}
               activeDot={{
-                r          : 4,
-                fill       : "#ffffff",
-                stroke     : "rgba(255,255,255,0.5)",
-                strokeWidth: 8
+                r: 4,
+                fill: "#ffffff",
+                stroke: "rgba(255,255,255,0.5)",
+                strokeWidth: 8,
               }}
             />
           </LineChart>
