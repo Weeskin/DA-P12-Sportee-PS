@@ -10,14 +10,29 @@ import { status } from "http-status";
  * Mettre à true pour utiliser les données mockées (sans backend)
  * Mettre à false pour utiliser l'API réelle
  */
-const USE_MOCK = false;
+const USE_MOCK = true;
 
 const BASE_URL = "/user";
 
-function buildApiError(status) {
-  const err = new Error();
-  err.status = status;
+function buildApiError(statusCode, message = "Erreur API") {
+  const err = new Error(message);
+  err.status = statusCode;
   return err;
+}
+
+function normalizeUserId(userId) {
+  const parsedId = Number(userId);
+  if (!Number.isInteger(parsedId) || parsedId <= 0) {
+    throw buildApiError(status.NOT_FOUND, `Utilisateur ${userId} introuvable`);
+  }
+  return parsedId;
+}
+
+function ensureFound(data, notFoundMessage = "Ressource introuvable") {
+  if (data == null) {
+    throw buildApiError(status.NOT_FOUND, notFoundMessage);
+  }
+  return data;
 }
 
 async function fetchApi(path, notFoundMessage) {
@@ -55,8 +70,11 @@ async function fetchApi(path, notFoundMessage) {
  * @returns {Promise<object>}
  */
 export async function getUserInfo(userId) {
-  if (USE_MOCK) return getMockUserInfo(Number(userId));
-  return fetchApi(`/${userId}`, `Utilisateur ${userId} introuvable`);
+  const id = normalizeUserId(userId);
+  if (USE_MOCK) {
+    return ensureFound(getMockUserInfo(id), `Utilisateur ${id} introuvable`);
+  }
+  return fetchApi(`/${id}`, `Utilisateur ${id} introuvable`);
 }
 
 /**
@@ -65,10 +83,16 @@ export async function getUserInfo(userId) {
  * @returns {Promise<object>}
  */
 export async function getUserActivity(userId) {
-  if (USE_MOCK) return getMockUserActivity(Number(userId));
+  const id = normalizeUserId(userId);
+  if (USE_MOCK) {
+    return ensureFound(
+      getMockUserActivity(id),
+      `Activité de l'utilisateur ${id} introuvable`
+    );
+  }
   return fetchApi(
-    `/${userId}/activity`,
-    `Activité de l'utilisateur ${userId} introuvable`
+    `/${id}/activity`,
+    `Activité de l'utilisateur ${id} introuvable`
   );
 }
 
@@ -78,10 +102,16 @@ export async function getUserActivity(userId) {
  * @returns {Promise<object>}
  */
 export async function getUserAverageSessions(userId) {
-  if (USE_MOCK) return getMockUserAverageSessions(Number(userId));
+  const id = normalizeUserId(userId);
+  if (USE_MOCK) {
+    return ensureFound(
+      getMockUserAverageSessions(id),
+      `Sessions moyennes de l'utilisateur ${id} introuvables`
+    );
+  }
   return fetchApi(
-    `/${userId}/average-sessions`,
-    `Sessions moyennes de l'utilisateur ${userId} introuvables`
+    `/${id}/average-sessions`,
+    `Sessions moyennes de l'utilisateur ${id} introuvables`
   );
 }
 
@@ -91,9 +121,15 @@ export async function getUserAverageSessions(userId) {
  * @returns {Promise<object>}
  */
 export async function getUserPerformance(userId) {
-  if (USE_MOCK) return getMockUserPerformance(Number(userId));
+  const id = normalizeUserId(userId);
+  if (USE_MOCK) {
+    return ensureFound(
+      getMockUserPerformance(id),
+      `Performances de l'utilisateur ${id} introuvables`
+    );
+  }
   return fetchApi(
-    `/${userId}/performance`,
-    `Performances de l'utilisateur ${userId} introuvables`
+    `/${id}/performance`,
+    `Performances de l'utilisateur ${id} introuvables`
   );
 }

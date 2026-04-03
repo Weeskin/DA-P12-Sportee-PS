@@ -9,7 +9,7 @@ function NotFound() {
         Oups! La page que vous demandez n'existe pas.
       </p>
       <Link
-        to="/user/12"
+        to="/dashboard/12"
         className={styles.link}
       >
         Retourner sur la page d'accueil
